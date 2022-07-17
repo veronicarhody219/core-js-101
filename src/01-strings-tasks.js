@@ -206,7 +206,7 @@ function getRectangleString(width, height) {
   const start = `${'-'.repeat(width)}\r\n`;
   const mid = `|${' '.repeat(width - 2)}|\r\n`;
   const end = mid.repeat(height - 2);
-  return` ${start} ${end} ${start}`;
+  return `${start} ${end} ${start}`;
 }
 
 /**
@@ -226,10 +226,11 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM';
+  const alphabet =
+    'abcdefghijklmnopqrstuvwxyzabcdefghijklmABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM';
   return str.replace(
     /[a-z]/gi,
-    (letter) => alphabet[alphabet.indexOf(letter) + 13],
+    (letter) => alphabet[alphabet.indexOf(letter) + 13]
   );
 }
 
