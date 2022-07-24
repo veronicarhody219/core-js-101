@@ -25,7 +25,7 @@ function Rectangle(width, height) {
 }
 
 // can't use arrow function here
-Rectangle.prototype.getArea = function () {
+Rectangle.prototype.getArea = function getArea() {
   return this.width * this.height;
 };
 
