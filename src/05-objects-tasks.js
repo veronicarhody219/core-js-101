@@ -23,7 +23,11 @@ function Rectangle(width, height) {
   this.width = width;
   this.height = height;
 }
-Rectangle.prototype.getArea = () => this.width * this.height;
+
+// can't use arrow function here
+Rectangle.prototype.getArea = function () {
+  return this.width * this.height;
+};
 
 /**
  * Returns the JSON representation of specified object
@@ -52,9 +56,11 @@ function getJSON(obj) {
  */
 function fromJSON(proto, json) {
   const obj = JSON.parse(json);
-
-  obj.prototype.constructor = proto;
-  return obj;
+  const newObject = Object.create(proto);
+  Object.keys(obj).forEach((key) => {
+    newObject[key] = obj[key];
+  });
+  return newObject;
 }
 
 /**

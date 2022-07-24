@@ -274,7 +274,9 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  return arr.flatMap((item, index) => Array.from({ length: index + 1 }).fill(item));
+  return arr.flatMap(
+    (item, index) => Array.from({ length: index + 1 }).fill(item),
+  );
 }
 
 /**
@@ -392,14 +394,7 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurrences(arr, item) {
-  let count = 0;
-  arr.map((element) => {
-    if (element === item) {
-      count += 1;
-      return count;
-    }
-    return count;
-  });
+  return arr.reduce((prev, curr) => (item === curr ? prev + 1 : prev), 0);
 }
 
 /**
@@ -482,7 +477,9 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  Array.from({ length: n }, (_, i) => Array.from({ length: n }, (v, j) => (i === j ? 1 : 0)));
+  return Array.from(
+    { length: n }, (_, i) => Array.from({ length: n }, (v, j) => (i === j ? 1 : 0)),
+  );
 }
 
 /**
@@ -499,7 +496,7 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-  return Array.from({ length: end }, (_, i) => start + i);
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 }
 
 /**
